@@ -37,30 +37,30 @@ export class SideBarComponent implements OnInit{
 
     this.mainMenu.accessLink = [
       {
-        name: 'Crear lista',
+        name: 'Create list',
         icon: 'uil-plus-square'
       },
       {
-        name: 'Canciones que te gustan',
+        name: 'Songs you like',
         icon: 'uil-heart-medical'
       }
     ]
 
     this.customOptions = [
       {
-        name: 'Mi lista º1',
+        name: 'My list º1',
         router: ['/']
       },
       {
-        name: 'Mi lista º2',
+        name: 'My list º2',
         router: ['/']
       },
       {
-        name: 'Mi lista º3',
+        name: 'My list º3',
         router: ['/']
       },
       {
-        name: 'Mi lista º4',
+        name: 'My list º4',
         router: ['/']
       }
     ]
