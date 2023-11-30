@@ -12,7 +12,7 @@ export class MediaPlayerComponent implements OnInit {
     album: 'Hola'
   };
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
   }
