@@ -11,7 +11,6 @@ describe('TracksPageComponent', () => {
       declarations: [TracksPageComponent]
     })
     .compileComponents();
-    
     fixture = TestBed.createComponent(TracksPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
