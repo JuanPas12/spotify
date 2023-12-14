@@ -14,23 +14,31 @@ export class TracksPageComponent implements OnInit, OnDestroy {
 
   listObservers$: Array<Subscription> = []
 
-  constructor(private tracksService: TrackService){}
+  constructor(private tracksService: TrackService) { }
 
   ngOnInit(): void {
-    this.tracksService.getAllTracks()
-    .subscribe((response: TrackModel[]) => {
-      this.tracksTrending = response
-    })
-
-    this.tracksService.getAllRandom()
-    .subscribe((response: TrackModel[]) => {
-      console.log(response)
-      this.tracksRandom = response
-    })
+    this.loadDataAll()
+    this.loadDataRandom()
   }
 
   ngOnDestroy(): void {
 
   }
 
+  async loadDataAll(): Promise<any> {
+    this.tracksTrending =  await this.tracksService.getAllTracks().toPromise()
+
+      // .then(res => { })
+      // .catch(err => {
+      //   console.log('Error de conexión');
+      // })
+  }
+
+  loadDataRandom(): void {
+    this.tracksService.getAllRandom()
+      .subscribe((response: TrackModel[]) => {
+        console.log(response)
+        this.tracksRandom = response
+      })
+  }
 }

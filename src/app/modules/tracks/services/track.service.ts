@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TrackModel } from '@core/models/tracks.model';
-import { Observable, map, mergeMap, of } from 'rxjs';
+import { Observable, catchError, map, mergeMap, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -34,7 +34,12 @@ export class TrackService {
   getAllRandom():Observable<any>{
     return this.httpClient.get(`${this.URL}/tracks`)
     .pipe(
-      mergeMap(({ data }: any) => this.skipById(data, 1))
+      mergeMap(({ data }: any) => this.skipById(data, 1)),
+      catchError((err) => {
+        const {status, statusText} = err
+        console.log('ALGO PASO, REVISAME', [status, statusText]);
+        return of([])
+      })
     )
   }
 }
